@@ -17,7 +17,7 @@ class SecurityConfig(
     @Throws(Exception::class)
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http.csrf { it.disable() }
-            .authorizeRequests { auth ->
+            .authorizeHttpRequests { auth ->
                 auth.requestMatchers("/api/auth/**").permitAll()
                     .anyRequest().authenticated()
             }
