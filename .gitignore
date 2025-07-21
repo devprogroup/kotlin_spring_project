@@ -34,9 +34,9 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/
 
 ### Kotlin ###
 .kotlin
-.env
 .env.{*}
+config.bat
+node_modules

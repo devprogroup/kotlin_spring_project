@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 class HelloController(
-    @Qualifier("customAuthenticationManager") private val customAuthenticationManager: AuthenticationManager,
+    @Qualifier("customAuthenticationManager")
+    private val customAuthenticationManager: AuthenticationManager,
     private val jwtTokenUtil: JwtTokenUtil,
     private val userService: UserService
 ) {
@@ -36,13 +37,13 @@ class HelloController(
     }
 
     @GetMapping("/users")
-    fun getUsers(@RequestParam(defaultValue = "world") name: String): ResponseEntity<List<User>> {
+    fun getUsers(): ResponseEntity<List<User>> {
         val users = userService.findAllUsers()
         return ResponseEntity.ok(users)
     }
 
     @GetMapping("/hello")
-    fun helloWorld(@RequestParam(defaultValue = "world") name: String): ResponseEntity<String> {
-        return ResponseEntity.ok("Hello, $name!")
+    fun helloWorld(): ResponseEntity<String> {
+        return ResponseEntity.ok("Hello, world!")
     }
 }
